@@ -46,21 +46,6 @@ jobs:
           vid: '${{ secrets.VERACODE_API_ID }}'
           vkey: '${{ secrets.VERACODE_API_KEY }}'
           scantimeout: 15
-          
-  import-issues:
-    needs: veracode-pipeline-scan
-    runs-on: ubuntu-latest
-    steps:
-      - name: get scan results
-        uses: actions/download-artifact@v2
-        with:
-          name: filtered-results
-
-      - name: import flaws as issues
-        uses: veracode/veracode-flaws-to-issues@v1
-        with:
-          scan-results-json: 'filtered_results.json'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   veracode-sca-task:
     runs-on: ubuntu-latest
