@@ -47,7 +47,7 @@ jobs:
           vkey: '${{ secrets.VERACODE_API_KEY }}'
           scantimeout: 15
 
-   veracode-sca-task:
+  veracode-sca-task:
     runs-on: ubuntu-latest
     name: Scan repository for Issues
 
