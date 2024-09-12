@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: get archive
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: verademo.war
           path: .
@@ -68,7 +68,7 @@ jobs:
           http --auth-type veracode_hmac GET "https://api.veracode.com/appsec/v2/applications/${guid}/findings?scan_type=STATIC&violates_policy=True&size=${total_flaws}" > policy_flaws.json
 
       - name: save results file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: policy-flaws
           path: /tmp/policy_flaws.json
